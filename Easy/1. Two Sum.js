@@ -55,14 +55,19 @@
 //     return res
 // };
 
-var twoSum = function(nums, target) {
+var twoSum = function (nums, target) {
+    // creating hashmap
     const hashMap = new Map()
-
-    for(let i = 0; i < nums.length; i++) {
-        let diff = target - nums[i]
-        if(hashMap.has(diff)) return [i, hashMap.get(diff)]
+    //iterating through the array
+    for (let i = 0; i < nums.length; i++) {
+        // difference between target and current number in the array
+        const diff = target - nums[i]
+        // checking if the diff number exists in hashmap,
+        // then return indexes of current number in the array and value from the hashmap
+        if (hashMap.has(diff)) return [i, hashMap.get(diff)]
+        // and only then setting the number with it index in the hashmap -> ex: 2 : 0, 7 : 1, 11 : 2, ...
         hashMap.set(nums[i], i)
     }
 };
 
-console.log(twoSum([2,7,11,15], 9))
+console.log(twoSum([2, 7, 11, 15], 9))
