@@ -40,25 +40,29 @@
 //     return t.length === 0;
 // };
 
+// var isAnagram = function (s, t) {
+//     if (s.length !== t.length) return false;
+//     const hashS = new Map()
+//     const hashT = new Map()
+//
+//     for (let i = 0; i < s.length; i++) {
+//         if (!hashS.has(s[i])) hashS.set(s[i], 0)
+//         if (!hashT.has(t[i])) hashT.set(t[i], 0)
+//         hashS.set(s[i], hashS.get(s[i]) + 1)
+//         hashT.set(t[i], hashT.get(t[i]) + 1)
+//     }
+//
+//     for (const key of hashS.keys()) {
+//         if (hashT.get(key) !== hashS.get(key)) {
+//             return false
+//         }
+//     }
+//
+//     return true
+// };
+
 var isAnagram = function (s, t) {
-    if (s.length !== t.length) return false;
-    const hashS = new Map()
-    const hashT = new Map()
-
-    for (let i = 0; i < s.length; i++) {
-        if (!hashS.has(s[i])) hashS.set(s[i], 0)
-        if (!hashT.has(t[i])) hashT.set(t[i], 0)
-        hashS.set(s[i], hashS.get(s[i]) + 1)
-        hashT.set(t[i], hashT.get(t[i]) + 1)
-    }
-
-    for (const key of hashS.keys()) {
-        if (hashT.get(key) !== hashS.get(key)) {
-            return false
-        }
-    }
-
-    return true
+    return s.split("").sort().join("") === t.split("").sort().join("")
 };
 
 console.log(isAnagram("anagram", "nagaram"))
