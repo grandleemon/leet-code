@@ -30,12 +30,15 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-var containsDuplicate = function (nums) {
-    const hash = {}
-    for (let i = 0; i < nums.length; i++) {
-        if (!hash[nums[i]]) hash[nums[i]] = 0
-        hash[nums[i]] += 1
-        if (hash[nums[i]] >= 2) return true
+var containsDuplicate = function(nums) {
+    const hashSet = new Set()
+
+    for(let i = 0; i < nums.length; i++) {
+        if(hashSet.has(nums[i])) {
+            return true
+        } else {
+            hashSet.add(nums[i])
+        }
     }
 
     return false
