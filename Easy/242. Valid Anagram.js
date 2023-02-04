@@ -41,27 +41,24 @@
 // };
 
 var isAnagram = function (s, t) {
-    if(s.length !== t.length) return false;
+    if (s.length !== t.length) return false;
     const hashS = new Map()
     const hashT = new Map()
 
     for (let i = 0; i < s.length; i++) {
-        if(!hashS.has(s[i])) hashS.set(s[i], 0)
+        if (!hashS.has(s[i])) hashS.set(s[i], 0)
+        if (!hashT.has(t[i])) hashT.set(t[i], 0)
         hashS.set(s[i], hashS.get(s[i]) + 1)
-    }
-
-    for (let i = 0; i < t.length; i++) {
-        if(!hashT.has(t[i])) hashT.set(t[i], 0)
         hashT.set(t[i], hashT.get(t[i]) + 1)
     }
 
-    for(const [key, value] of hashS) {
-        if(hashT.get(key) === value) {
-            hashT.delete(key)
+    for (const key of hashS.keys()) {
+        if (hashT.get(key) !== hashS.get(key)) {
+            return false
         }
     }
 
-    return hashT.size === 0
+    return true
 };
 
 console.log(isAnagram("anagram", "nagaram"))
